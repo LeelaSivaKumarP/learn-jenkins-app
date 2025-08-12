@@ -26,6 +26,7 @@ pipeline {
                 sh '''
                     echo "Test Stage started"
                     ls build/index.html
+                    npm test
                 '''
             }
         }
