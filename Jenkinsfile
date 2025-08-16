@@ -42,6 +42,7 @@ pipeline {
                     image 'mcr.microsoft.com/playwright:v1.54.0-noble'
                     reuseNode true
                 }
+            }
                 steps {
                     sh '''
                         npm install -g serve
@@ -49,8 +50,8 @@ pipeline {
                         npx playwrignt test
                     '''
                 }
-            }
-
         }
+
+    
     }
 }
