@@ -89,6 +89,7 @@ pipeline {
                     echo "Deploying netlify site to $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build --prod
+                    echo "Sample code added to make changes, so that build will be triggered again"
                 '''
             }
         }
