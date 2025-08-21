@@ -111,9 +111,10 @@ pipeline {
             }
 
             steps {
-                sh '''
+                sh """
+                    echo "URL of staging is ${env.STAGING_URL}"
                     npx playwright test --reporter=html
-                '''
+                """
             }
             post {
                 always {
