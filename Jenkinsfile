@@ -113,6 +113,7 @@ pipeline {
             steps {
                 sh """
                     echo "URL of staging is ${env.STAGING_URL}"
+                    echo "Variable value is CI_ENVIRONMENT_URL"
                     npx playwright test --reporter=html
                 """
             }
