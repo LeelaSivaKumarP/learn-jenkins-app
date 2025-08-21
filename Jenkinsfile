@@ -84,14 +84,14 @@ pipeline {
             }
             steps {
                 sh '''
-                    npm install netlify-cli@20.1.1
+                    npm install netlify-cli@20.1.1 node-jq
                     node_modules/.bin/netlify --version
                     echo "Deploying netlify site to $NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
                 '''
                 shell {
-                    env.MY_VAR = sh(shell: 'node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json', returnStdout:true)
+                    env.MY_VAR = sh(shell: "node_modules/.bin/netlify -r '.deploy_url' 'deploy-output.json'", returnStdout:true)
                 }
             }
         }
