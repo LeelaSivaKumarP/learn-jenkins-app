@@ -94,8 +94,8 @@ pipeline {
         }
 
         stage('Approval') {
-            timeout(time: 15, unit: 'SECONDS') {
-                steps {
+            steps {
+                timeout(time: 15, unit: 'SECONDS') {
                     input 'Ready for next stage?'
                 }
             }    
