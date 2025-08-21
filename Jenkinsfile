@@ -90,9 +90,9 @@ pipeline {
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
                 '''
-                shell {
-                    env.MY_VAR = sh(shell: "node_modules/.bin/netlify -r '.deploy_url' 'deploy-output.json'", returnStdout:true)
-                }
+            }
+            script {
+                env.STAGING_URL = sh(shell: "node_modules/.bin/netlify -r '.deploy_url' 'deploy-output.json'", returnStdout:true)
             }
         }
 
@@ -105,7 +105,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = env.MY_VAR
+                CI_ENVIRONMENT_URL = env.STAGING_URL
             }
 
             steps {
